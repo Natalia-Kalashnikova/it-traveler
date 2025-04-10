@@ -31,8 +31,6 @@ const changeSuperUserName = () => {
         <FavoritePlace v-for="n in 4" :key="n" />
         </slot>
         <slot></slot>
-      <IButton class="w-full" @click="changeUserName">Change Name</IButton>
-      <IButton class="w-full mt-2" @click="changeSuperUserName">Change Super User Name</IButton>
-      <IButton class="w-full mt-10" @click="increment">Додати маркер</IButton>
+      <IButton class="w-full mt-10" variant="gradient" @click="increment">Додати маркер</IButton>
     </div>
 </template>
