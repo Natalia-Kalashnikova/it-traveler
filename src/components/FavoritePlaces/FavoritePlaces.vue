@@ -12,8 +12,10 @@ const changeButtonVariant = () => {
 </script>
 
 <template>
-      <div class="px-6" @click="()=> console.log('clicked')">
-        <div class="text-gray mb-4">Додані маркери</div>
+      <div class="px-6"
+      @click.self.once="()=> console.log('clicked')"
+      @keydown.alt.enter="()=> console.log('alt+enter')">
+        <div class="text-gray mb-4" @click.stop="()=> console.log('click2')">Додані маркери</div>
         <div class="py-5">
           <IInput label="Some label" />
           <a href="/" class="text-black" @click.prevent="()=> console.log('prevented')">Click me</a>
