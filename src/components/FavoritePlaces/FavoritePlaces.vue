@@ -1,7 +1,7 @@
 <script setup>
 import FavoritePlace from '../FavoritePlace/FavoritePlace.vue';
 import IButton from '../IButton/IButton.vue';
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import IInput from '../IInput/IInput.vue';
 
 const buttonVariant = ref('gradient');
@@ -12,9 +12,7 @@ const changeButtonVariant = () => {
 </script>
 
 <template>
-      <div class="px-6"
-      @click.self.once="()=> console.log('clicked')"
-      @keydown.alt.enter="()=> console.log('alt+enter')">
+      <div class="px-6">
         <div class="text-gray mb-4" @click.stop="()=> console.log('click2')">Додані маркери</div>
         <div class="py-5">
           <IInput label="Some label" />
