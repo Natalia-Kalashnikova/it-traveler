@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 
 const props = defineProps({
   label: String,
@@ -14,11 +13,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const text = ref('')
 
-const changeValue = (event) => {
-  text.value = event.target.value
-}
 </script>
 
 <template>
