@@ -1,5 +1,4 @@
 <script setup>
-
 const props = defineProps({
   label: String,
   placeholder: String,
@@ -12,8 +11,6 @@ const props = defineProps({
 defineOptions({
   inheritAttrs: false,
 })
-
-
 </script>
 
 <template>
