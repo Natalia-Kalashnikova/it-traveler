@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import IButton from '../IButton/IButton.vue';
 import MarkerIcon from '../icons/MarkerIcon.vue';
 import IInput from '../IInput/IInput.vue';
@@ -19,6 +19,9 @@ const formData = reactive({
   description: '',
   img: ''
 })
+const uploadText = computed(() => {
+  return formData.img ? 'Натисніть тут,  щоб змінити фото' : 'Натисніть тут,  щоб додати фото'
+})
 
 const handleUpload = (url) => {
   formData.img = url
@@ -31,8 +34,11 @@ const handleUpload = (url) => {
       <div class="flex gap-1 justify-center font-bold text-center mb-10"><MarkerIcon/> Додати маркер</div>
       <IInput label="Локація" class="mb-4" v-model="formData.title" />
       <IInput label="Опис" type="textarea" class="mb-2" v-model="formData.description" />
-      <InputImage class="mb-10" @uploaded="handleUpload" />
-      <IButton class="w-full" variant="gradient">Додати</IButton>
+      <div class="flex gap-2 items-center mb-10">
+        <img v-if="formData.img" :src="formData.img" alt="avatar" class="w-8 h-8 object-cover">
+        <InputImage @uploaded="handleUpload">{{ uploadText }}</InputImage>
+      </div>
+        <IButton class="w-full" variant="gradient">Додати</IButton>
     </form>
   </IModal>
 </template>

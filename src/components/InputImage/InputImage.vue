@@ -19,7 +19,6 @@ const handleUploadImg = (event) => {
 
   fileReader.onload = () => {
     errorMessage.value = ''
-    console.log(fileReader.result);
    emit('uploaded', fileReader.result)
 
   }
@@ -32,7 +31,7 @@ const handleUploadImg = (event) => {
       <input type="file" accept="image/*" class="hidden" @change="handleUploadImg">
       <span class="flex gap-1 items-center">
         <UploadIcon />
-      <span class="underline text-xs">Натисніть тут, щоб додати фото</span>
+      <span class="underline text-xs"><slot></slot></span>
     </span>
    </label>
    <div v-if="errorMessage" class="text-red-500">{{errorMessage }}</div>
