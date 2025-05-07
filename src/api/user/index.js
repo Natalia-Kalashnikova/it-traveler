@@ -5,7 +5,7 @@ export const login = (body) => {
 }
 
 export const registerUser = (body) => {
-  return clientFetch.post(('/user/register', body))
+  return clientFetch.post('/user/register', body)
 }
 
 export const logout = () => {
