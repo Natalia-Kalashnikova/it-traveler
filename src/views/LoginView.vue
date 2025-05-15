@@ -1,26 +1,14 @@
 <script setup>
 import LoginForm from '@/components/Auth/LoginForm/LoginForm.vue';
-import { login } from '../api/user'
+import { authService } from '@/api/authService/index.js';
 import { useRouter } from 'vue-router';
 import { useMutation } from '@/composables/useMutation.js';
 
 const router = useRouter()
 const { isLoading, error, mutation: handleLogin } = useMutation({
-  mutationFn: login,
+  mutationFn: data => authService.login(data),
   onSuccess: ()=> router.replace('/map')
 })
-
-// const handleLogin = async (userData) => {
-//   isLoading.value=true
-//   try {
-//     await login(userData)
-//     router.replace('/map')
-//   } catch (error) {
-//     console.error(error)
-//   } finally {
-//     isLoading.value=false
-//   }
-// }
 </script>
 
 <template>

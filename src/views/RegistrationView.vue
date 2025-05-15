@@ -1,26 +1,14 @@
 <script setup>
 import RegistrationForm from '@/components/Auth/RegistrationForm/RegistrationForm.vue';
-import { registerUser } from '@/api/user/index.js';
+import { authService } from '@/api/authService/index.js';
 import { useRouter } from 'vue-router'
 import { useMutation } from '@/composables/useMutation.js';
 
 const router = useRouter()
 const { isLoading, error, mutation: handleRegisterUser } = useMutation({
-  mutationFn: registerUser,
+  mutationFn: data => authService.registerUser(data),
   onSuccess: ()=> router.replace('/map')
 })
-
-// const handleRegisterUser = async (userData) => {
-//   isLoading.value = true;
-//   try {
-//     await registerUser(userData)
-//     router.replace('/map')
-//   } catch (error) {
-//     console.error(error)
-//   } finally {
-//     isLoading.value = false
-//   }
-// }
 </script>
 
 <template>
