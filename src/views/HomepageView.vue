@@ -63,7 +63,13 @@ onMounted(() => {
 <template>
   <main class="flex h-screen">
     <div class="bg-white h-full w-[400px] shrink-0 overflow-auto pb-10">
-      <FavoritePlaces :items="favoritePlaces" :active-id="activeId" @place-clicked="changePlace" @create="openModal" />
+      <FavoritePlaces
+       :items="favoritePlaces"
+       :active-id="activeId"
+       @place-clicked="changePlace"
+       @create="openModal"
+       @updated="getPlaces"
+      />
       <CreateNewPlaceModal :is-open="isOpen" :is-loading="isAddingPlace" :has-error="error" @close="closeModal" @submit="handleAddPlace" />
     </div>
     <div class="w-full h-full flex items-center justify-center text-6xl">
@@ -74,7 +80,7 @@ onMounted(() => {
         </MapboxMarker>
         <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lngLat="place.coordinates" anchor="bottom">
           <button @click.stop="changeActiveId(place.id)">
-            <MarkerIcon class="h-8 w-8" />
+            <MarkerIcon class="h-8 w-8" is-active />
           </button>
         </MapboxMarker>
       </MapboxMap>
