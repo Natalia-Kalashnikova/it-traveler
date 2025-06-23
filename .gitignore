@@ -31,3 +31,5 @@ coverage
 
 # map api token
 src/map/token.js
+
+.env
