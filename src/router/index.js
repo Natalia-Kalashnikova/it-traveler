@@ -27,14 +27,18 @@ export const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const authRoutes = ['login', 'registration']
+  const publicRoutes = ['greeting', 'login', 'registration']
   const { name } = to
 
-  if (authService.isLoggedIn() && authRoutes.includes(name)) {
+    if (authService.isLoggedIn() && ['login', 'registration'].includes(name)) {
     next({ name: 'homepage' })
-  } else if (!authRoutes.includes(name) && !authService.isLoggedIn()) {
-    next({ name: 'login' })
-  } else {
+  }
+
+  else if (!publicRoutes.includes(name) && !authService.isLoggedIn()) {
+    next({ name: 'greeting' })
+  }
+
+  else {
     next()
   }
 })
